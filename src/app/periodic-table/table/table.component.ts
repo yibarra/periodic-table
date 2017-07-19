@@ -1,28 +1,40 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import * as d3 from 'd3';
+import { animate, query, trigger, stagger, state, style, transition } from '@angular/animations';
+
+import { TablePeriodicServiceService } from './../services/table-periodic-service';
 
 @Component({
   selector: 'table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  styleUrls: ['./table.component.scss'],
+  animations: [
+    trigger('elementsAnimation', [
+      transition('* => *', [
+        query(':enter', [
+          style({ opacity: 0, transform: 'translateY(-100%)' })
+        ], { optional: true }),
+        query(':enter', stagger('50ms', [
+          animate('50ms ease-out',
+            style({ opacity: 1, transform: 'translateY(0)' })
+          )
+        ]))
+      ])
+    ])
+  ]
 })
 export class TableComponent implements OnInit {
+  public elements: Array<any>;
   public table: any = null;
-  constructor(private _element: ElementRef) { }
+  public typeElements: string = 'normal';
+
+  constructor(private _periodicService: TablePeriodicServiceService, private _element: ElementRef) { }
 
   ngOnInit() {
-    this.table = d3.select(this._element.nativeElement.querySelector('#table'));
-    this.table.append('circle')
-      .attr('fill', 'red')
-      .attr('cx', 90)
-      .attr('cy', 90)
-      .attr('r', 90)
-      .on('click', this.preview);
+    this.elements = this._periodicService.getAll();
   }
 
-  preview(this: SVGCircleElement) {
-    let eventDrag: d3.dragEvent<SVGCircleElement> = event;
-    console.log(eventDrag);
+  typeView(type: string = 'normal'): void {
+    this.typeElements = type;
   }
 
   onResize(event) {

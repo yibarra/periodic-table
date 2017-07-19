@@ -1,0 +1,27 @@
+<section class="element">
+  <div [ngSwitch]="typeView" class="element--content">
+    <div class="element-normal" *ngSwitchCase="'normal'" [style.backgroundColor]="elementData.cpkHexColor">
+      <p class="number-atomic">{{elementData.atomicNumber}}</p>
+      <p class="symbol">{{elementData.symbol}}</p>
+      <p class="electro-negativity"><span>{{elementData.atomicMass}}</span></p>
+    </div>
+
+    <div *ngSwitchCase="'radioActivity'">
+      <p class="element-number-atomic">{{elementData.atomicNumber}}</p>
+      <p class="element-symbol">{{elementData.symbol}}</p>
+      <p class="element-electro-negativity">{{elementData.atomicMass}}</p>
+    </div>
+
+    <div *ngSwitchCase="'radius'">
+      <p class="element-number-atomic">{{elementData.atomicNumber}}</p>
+      <p class="element-symbol">{{elementData.symbol}}</p>
+      <p class="element-electro-negativity">{{elementData.atomicMass}}</p>
+    </div>
+
+    <div *ngSwitchCase="'ionic'">
+      <p class="element-number-atomic">{{elementData.atomicNumber}}</p>
+      <p class="element-symbol">{{elementData.symbol}}</p>
+      <p class="element-electro-negativity">{{elementData.atomicMass}}</p>
+    </div>
+  </div>
+</section>

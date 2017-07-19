@@ -1,0 +1,7 @@
+@import '~../styles.scss';
+
+table {
+    @include box-display();
+    float: left;
+    width: 100%;
+}

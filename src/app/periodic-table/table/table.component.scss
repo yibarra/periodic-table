@@ -1,0 +1,37 @@
+@import '~../../../styles.scss';
+
+.table {
+    @include box-display();
+    display: flex;
+    height: 825px;
+    list-style: none;
+    margin: 0;
+    min-width: 768px;
+    padding: 0;
+    position: relative;
+    width: 1170px;
+
+    &--container {
+        @include box-display();
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    &-element {
+        @include box-display();
+        cursor: default;
+        display: flex;
+        height: 75px;
+        float: left;
+        position: absolute;
+        width: 65px;
+    }
+}
+
+svg {
+    @include box-display;
+    float: left;
+    width: 900px;
+}

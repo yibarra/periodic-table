@@ -1,1 +1,12 @@
-<svg id="table" (window:resize)="onResize($event)"></svg>
+<button (click)="typeView('normal')">normal</button>
+<button (click)="typeView('radioActivity')">radio activity</button>
+<button (click)="typeView('radius')">atomic radius</button>
+<button (click)="typeView('ionic')">ionic radius</button>
+
+<section class="table--container" (window:resize)="onResize($event)">
+  <ul class="table" [@elementsAnimation]="elements.length">
+    <li class="table-element" *ngFor="let element of elements" elementPosition [xPos]="element.xpos" [yPos]="element.ypos" (change)="positionElement()">
+      <div class="element" element [elementData]="element" [typeView]="typeElements"></div>
+    </li>
+  </ul>
+</section>

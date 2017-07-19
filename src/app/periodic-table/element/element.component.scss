@@ -1,0 +1,59 @@
+@import '~../../../styles.scss';
+
+.element {
+    @include box-display;
+    
+    &-normal {
+        @include box-display;
+        align-items: center;
+        border: 1px solid $black-900;
+        display: flex;
+        float: left;
+        flex-flow: row wrap;
+        justify-content: center;
+        height: 75px;
+        padding: 5px 10px 7px;
+        transition: all 350ms ease-in;
+        width: 100%;
+
+        .electro-negativity,
+        .number-atomic,
+        .symbol {
+            @include box-display();
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            line-height: 1em;
+            position: relative;
+            width: 100%;
+
+            span {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+
+        .symbol {
+            @include font($font-default, 24px, 400, $black-900);
+            padding-bottom: 3px;
+        }
+
+        .number-atomic {
+            @include font($font-default, 13px, 500, $black-900);
+            justify-content: flex-end;
+        }
+
+        .electro-negativity {
+            @include font($font-default, 10px, 300, $black-900);
+        }
+    }
+
+    &--content {
+        @include box-display();
+        height: 75px;
+        overflow: hidden;
+        position: relative;
+        width: 65px;
+    }
+}
