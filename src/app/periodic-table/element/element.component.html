@@ -12,10 +12,12 @@
       <p class="element-electro-negativity">{{elementData.atomicMass}}</p>
     </div>
 
-    <div *ngSwitchCase="'radius'">
-      <p class="element-number-atomic">{{elementData.atomicNumber}}</p>
-      <p class="element-symbol">{{elementData.symbol}}</p>
-      <p class="element-electro-negativity">{{elementData.atomicMass}}</p>
+    <div class="element-normal radius" *ngSwitchCase="'radius'">
+      <p class="number-atomic">{{elementData.atomicNumber}}</p>
+      <p class="symbol">{{elementData.symbol}}</p>
+      <p class="electro-negativity"><span>{{elementData.atomicMass}}</span></p>
+      <div class="atomicRadius" [ngStyle]="{'height.px': elementData.atomicRadius, 
+        'backgroundColor': elementData.cpkHexColor}"></div>
     </div>
 
     <div *ngSwitchCase="'ionic'">

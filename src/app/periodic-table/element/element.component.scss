@@ -47,6 +47,40 @@
         .electro-negativity {
             @include font($font-default, 10px, 300, $black-900);
         }
+
+        &.radius {
+            background-color: transparent;
+            overflow: hidden;
+            position: relative;
+
+            .electro-negativity,
+            .number-atomic,
+            .symbol {
+                color: $white-900;
+                z-index: 2;
+            }
+
+            .electro-negativity {
+                font-weight: 400;
+            }
+
+            .number-atomic {
+                font-weight: 300;
+            }
+
+            .symbol {
+                font-weight: 300;
+            }
+
+            .atomicRadius {
+                border-radius: 100%;
+                bottom: -150%;
+                left: -100%;
+                position: absolute;
+                width: 300%;
+                z-index: 1;
+            }
+        }
     }
 
     &--content {
