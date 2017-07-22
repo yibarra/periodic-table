@@ -69,11 +69,14 @@ export class TablePeriodicServiceService {
    * @memberof TablePeriodicServiceService
    */
   getGroupBlocks(): any {
-    let groups: Array<string> = [];
+    let groups: Array<any> = [];
 
     for(let element of periodicTable) {
-      if(groups.indexOf(element.groupBlock) == -1) {
-        groups.push(element.groupBlock);
+      if(!groups.find((value) => (value.name == element.groupBlock))) {
+        groups.push({
+          'name': element.groupBlock,
+          'color': element.cpkHexColor
+        });
       }
     }
 

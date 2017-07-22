@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: '[element]',
@@ -7,11 +7,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ElementComponent implements OnInit {
   @Input() elementData: Array<any>;
+  @Input() groupBlock: Array<any>;
   @Input() typeView: string = 'normal';
+
+  public activeGroup: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  ngOnChanges(changes: any):void {
+    
+  }
 }

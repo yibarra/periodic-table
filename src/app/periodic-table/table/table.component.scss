@@ -9,7 +9,7 @@
     min-width: 768px;
     padding: 0;
     position: relative;
-    width: 1170px;
+    width: $page-width;
 
     &--container {
         @include box-display();

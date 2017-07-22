@@ -48,6 +48,33 @@
             @include font($font-default, 10px, 300, $black-900);
         }
 
+        &.group {
+            opacity: 1;
+        }
+
+        &.not-group {
+            background-color: transparent !important;
+            opacity: .4;
+
+            .symbol,
+            .number-atomic,
+            .electro-negativity {
+                color: $white-900;
+                font-weight: 300;
+            }
+
+            &:after {
+                @include box-display;
+                border: 1px solid rgba($white-900, .3);
+                content: '';
+                height: calc(100% - 1px);
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: calc(100% - 1px);
+            }
+        }
+
         &.radius {
             background-color: transparent;
             overflow: hidden;
@@ -73,12 +100,30 @@
             }
 
             .atomicRadius {
-                border-radius: 100%;
-                bottom: -150%;
-                left: -100%;
+                @include box-display;
+                bottom: 0;
+                height: 100%;
+                overflow: hidden;
                 position: absolute;
-                width: 300%;
-                z-index: 1;
+                width: 100%;
+
+                .radius {
+                    @include box-display;
+                    border-radius: 100%;
+                    position: absolute;
+                    top: 0;
+                }
+            }
+
+            &:after {
+                @include box-display;
+                border: 1px solid rgba($white-900, .3);
+                content: '';
+                height: calc(100%);
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: calc(100%);
             }
         }
     }

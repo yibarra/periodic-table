@@ -2,6 +2,9 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800');
 $font-default: 'Open Sans', sans-serif;
 
+/* --- VARS  --- */
+$page-width: 1170px;
+
 /* --- COLORS --- */
 $black-900: #21313B;
 
@@ -24,9 +27,17 @@ $white-900: #FFF;
 body {
     @include box-display();
     background-color: $black-900;
+    display: flex;
+    justify-content: center;
     margin: 0;
     min-height: 100vh;
     max-width: 100vw;
     padding: 0;
     width: 100%;
+}
+
+%wrapper {
+    @include box-display();
+    max-width: 100%;
+    width: $page-width;
 }

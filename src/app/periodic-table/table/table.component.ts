@@ -24,6 +24,8 @@ import { TablePeriodicServiceService } from './../services/table-periodic-servic
 })
 export class TableComponent implements OnInit {
   public elements: Array<any>;
+  public groupsElements: Array<any>;
+  public groupSelect: Array<any> = null;
   public table: any = null;
   public typeElements: string = 'normal';
 
@@ -31,10 +33,11 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     this.elements = this._periodicService.getAll();
+    this.groupsElements = this._periodicService.getGroupBlocks();
   }
 
-  typeView(type: string = 'normal'): void {
-    this.typeElements = type;
+  onGroup(event: Array<any>):void {
+    this.groupSelect = event;
   }
 
   onResize(event) {
@@ -42,6 +45,14 @@ export class TableComponent implements OnInit {
       console.log('resize');
     } else {
       console.log('normal');
+    }
+  }
+
+  typeView(type: string = 'normal'): void {
+    this.typeElements = type;
+
+    if(this.typeElements === 'normal') {
+      this.groupsElements = this._periodicService.getGroupBlocks();
     }
   }
 }

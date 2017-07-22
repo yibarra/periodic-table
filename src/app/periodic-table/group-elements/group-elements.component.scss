@@ -1,0 +1,60 @@
+@import '~../../../styles.scss';
+
+.group-block {
+    @include box-display;
+    @extend %wrapper;
+    float: left;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+
+    &--item {
+        @include box-display;
+        margin: 5px 15px;
+        position: relative;
+
+        &--btn {
+            @include box-display;
+            @include font($font-default, 13px, 300, $white-900);
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+            cursor: default;
+            letter-spacing: 0.010em;
+            outline: none;
+            padding: 0;
+            text-transform: capitalize;
+
+            span {
+                @include box-display;
+                background-color: transparent;
+                border: 3px solid $white-900;
+                border-radius: 100%;
+                height: 15px;
+                float: left;
+                margin: 0 10px 0 0;
+                position: relative;
+                transition: all 300ms ease-in-out;
+                top: 1px;
+                width: 15px;
+
+                &.active {
+                    border: none;
+                    left: 0;
+                    margin: 0;
+                    opacity: 0;
+                    position: absolute;
+                    top: 1px;
+                }
+            }
+
+            &.active {
+                span {
+                    &.active {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
