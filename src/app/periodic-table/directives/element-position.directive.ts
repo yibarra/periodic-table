@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Renderer, Input, HostBinding, OnChanges, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, HostBinding, OnChanges, OnInit } from '@angular/core';
 
 @Directive({
   selector: '[elementPosition]'
@@ -12,8 +12,17 @@ export class ElementPositionDirective implements OnInit {
 
   private xPositionElement: number;
 
+  /**
+   * Creates an instance of ElementPositionDirective.
+   * @param {ElementRef} _element 
+   * @memberof ElementPositionDirective
+   */
   constructor(private _element: ElementRef) {}
 
+  /**
+   * init
+   * @memberof ElementPositionDirective
+   */
   ngOnInit() {
     this.styleLeftPosition = this.xPosition(this.xPos);
     this.styleTopPosition = this.yPosition(this.yPos);
@@ -21,7 +30,6 @@ export class ElementPositionDirective implements OnInit {
 
   /**
    * xPosition element
-   * 
    * @param {number} [x=1] 
    * @returns {number} 
    * @memberof ElementPositionDirective

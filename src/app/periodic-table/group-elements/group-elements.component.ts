@@ -6,7 +6,28 @@ import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
   styleUrls: ['./group-elements.component.scss']
 })
 export class GroupElementsComponent implements OnInit {
+  /**
+   * gorup default
+   * 
+   * @private
+   * @type {Array<any>}
+   * @memberof GroupElementsComponent
+   */
+  private groupDefault: Array<any> = [{name: '', color: ''}];
+
+  /**
+   * group element
+   * 
+   * @type {Array<any>}
+   * @memberof GroupElementsComponent
+   */
   @Input() groupsElements: Array<any>;
+
+  /**
+   * ouput event
+   * 
+   * @memberof GroupElementsComponent
+   */
   @Output() groupSelectEmitter = new EventEmitter<any>();
 
   /**
@@ -29,18 +50,18 @@ export class GroupElementsComponent implements OnInit {
    * @memberof GroupElementsComponent
    */
   ngOnInit() {
-    this.groupSelectElementEvent([{name: '', color: ''}]);
+    this.groupSelectElementEvent(this.groupDefault);
   }
 
   /**
-   * toggle group
+   * group select
    * 
    * @param {Array<any>} group 
    * @memberof GroupElementsComponent
    */
   groupSelectElementEvent(group: Array<any>):void {
     if(this.groupSelectElement == group) {
-      this.groupSelectElement = [{name: '', color: ''}];
+      this.groupSelectElement = this.groupDefault;
     } else {
       this.groupSelectElement = group;
     }
