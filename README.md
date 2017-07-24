@@ -1,4 +1,4 @@
 # PeriodicTable
-Angular 4
+Periodic table of the elements, created with Angular v4.
 
-DEMO[Karma](https://karma-runner.github.io).
+[DEMO](https://yibarra.github.io/periodic-table/).
