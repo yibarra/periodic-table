@@ -1,14 +1,22 @@
-<button (click)="typeView('normal')">normal</button>
-<button (click)="typeView('radioActivity')">radio activity</button>
-<button (click)="typeView('radius')">atomic radius</button>
-<button (click)="typeView('ionic')">ionic radius</button>
+<button class="main" (click)="typeView('normal')" [ngClass]="{'active': typeElements == 'normal' || typeElements == ''}">normal</button>
+<button class="main" (click)="typeView('radioActivity')" [ngClass]="{'active': typeElements == 'radioActivity'}" disabled>radio activity</button>
+<button class="main" (click)="typeView('radius')" [ngClass]="{'active': typeElements == 'radius'}">atomic radius</button>
+<button class="main" (click)="typeView('ionic')" [ngClass]="{'active': typeElements == 'ionic'}" disabled>ionic radius</button>
 
 <!-- GROUP ELEMENTS -->
-<section group-elements [groupsElements]="groupsElements" (groupSelectEmitter)="onGroup($event)"></section>
+<section class="table--groups" group-elements [groupsElements]="groupsElements" (groupSelectEmitter)="onGroup($event)"></section>
 
+<!-- ELEMENTS --> 
 <section class="table--container" (window:resize)="onResize($event)">
+  <!-- <div view-element [elementData]="elementData">{{elementData}}</div> -->
+
   <ul class="table" [@elementsAnimation]="elements.length">
     <li class="table-element" *ngFor="let element of elements" elementPosition [xPos]="element.xpos" [yPos]="element.ypos" (change)="positionElement()">
-      <div class="element" element [elementData]="element" [typeView]="typeElements" [groupBlock]="groupSelect"></div>
+      <div class="element" element 
+        [elementData]="element" 
+        [typeView]="typeElements" 
+        [groupBlock]="groupSelect" 
+        (elementSelected)="onElement($event)">
+      </div>
   </ul>
 </section>

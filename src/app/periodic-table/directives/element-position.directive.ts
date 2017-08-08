@@ -46,6 +46,6 @@ export class ElementPositionDirective implements OnInit {
    * @memberof ElementPositionDirective
    */
   yPosition(y: number = 1): number {
-    return this._element.nativeElement.getBoundingClientRect().height * (y - 1);
+    return this._element.nativeElement.getBoundingClientRect().height * y;
   }
 }

@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { animate, query, trigger, stagger, state, style, transition } from '@angular/animations';
 
@@ -23,6 +24,7 @@ import { TablePeriodicServiceService } from './../services/table-periodic-servic
   ]
 })
 export class TableComponent implements OnInit {
+  public elementData: Array<any>;
   public elements: Array<any>;
   public groupsElements: Array<any>;
   public groupSelect: Array<any> = null;
@@ -33,11 +35,20 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     this.elements = this._periodicService.getAll();
-    this.groupsElements = this._periodicService.getGroupBlocks();
+
+    if(this.elements.length > 0) {
+      this.groupsElements = this._periodicService.getGroupBlocks();
+    }
   }
 
   onGroup(event: Array<any>):void {
     this.groupSelect = event;
+  }
+
+  onElement(event: Array<any>):void {
+    if(event.hasOwnProperty('atomicNumber')) {
+      this.elementData = event;
+    }
   }
 
   onResize(event) {

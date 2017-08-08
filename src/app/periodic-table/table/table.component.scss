@@ -11,6 +11,7 @@
     position: relative;
     width: $page-width;
 
+    &--groups,
     &--container {
         @include box-display();
         align-items: center;

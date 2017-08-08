@@ -1,4 +1,4 @@
-<section class="element">
+<section class="element" (click)="viewElement(elementData)">
   <div [ngSwitch]="typeView" class="element--content">
     <div class="element-normal" *ngSwitchCase="'normal'" [style.backgroundColor]="elementData.cpkHexColor"
       [ngClass]="{'group': groupBlock.name != undefined && groupBlock.name == elementData.groupBlock, 'not-group': groupBlock.name != undefined && groupBlock.name != elementData.groupBlock}">

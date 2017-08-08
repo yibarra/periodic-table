@@ -8,6 +8,7 @@ import { ElementPositionDirective } from './directives/element-position.directiv
 import { TablePeriodicServiceService } from './services/table-periodic-service';
 import { ElementRadiusDirective } from './directives/element-radius.directive';
 import { GroupElementsComponent } from './group-elements/group-elements.component';
+import { ViewElementComponent } from './view-element/view-element.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { GroupElementsComponent } from './group-elements/group-elements.componen
     ElementComponent,
     ElementPositionDirective,
     ElementRadiusDirective,
-    GroupElementsComponent
+    GroupElementsComponent,
+    ViewElementComponent
   ],
   exports: [
     TableComponent

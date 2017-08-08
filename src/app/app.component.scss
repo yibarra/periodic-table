@@ -3,5 +3,18 @@
 table {
     @include box-display();
     float: left;
+    text-align: center;
     width: 100%;
+}
+
+header {
+    @extend %wrapper;
+    text-align: left;
+
+    h1 {
+        @include box-display;
+        @include font($font-default, 41px, 300, $white-900);
+        margin: 0;
+        padding: 0 0 60px;
+    }
 }
