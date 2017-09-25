@@ -13,7 +13,7 @@ export class GroupElementsComponent implements OnInit {
    * @type {Array<any>}
    * @memberof GroupElementsComponent
    */
-  private groupDefault: Array<any> = [{name: '', color: ''}];
+  private groupDefault: Array<any> = [{name: 'All', color: '#FF0000'}];
 
   /**
    * group element

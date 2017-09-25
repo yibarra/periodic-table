@@ -1,85 +1,96 @@
-import { element } from 'protractor';
 import { Injectable } from '@angular/core';
 
 import { periodicTable } from './table-periodic';
+import { Element } from './../../shared/element.model';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Injectable()
 export class TablePeriodicServiceService {
-  constructor() {}
+  elements: FirebaseListObservable<Element[]> = null;
+  element: FirebaseListObservable<Element> = null;
 
   /**
-   * get all
-   * 
-   * @returns 
+   * Creates an instance of TablePeriodicServiceService.
+   * @param {AngularFireDatabase} db 
    * @memberof TablePeriodicServiceService
    */
-  getAll() {
-    return periodicTable;
+  constructor(public db: AngularFireDatabase) {}
+
+  /**
+   * get all elements
+   * @returns {FirebaseListObservable<Element[]>} 
+   * @memberof TablePeriodicServiceService
+   */
+  getAll():FirebaseListObservable<Element[]> {
+    return this.db.list('/elements');
   }
 
-/**
- * get element by name
- * 
- * @param {string} [name='Lithium'] 
- * @returns {*} 
- * @memberof TablePeriodicServiceService
- */
-  getElementByName(name: string = 'Lithium'): any {
-    return periodicTable.map((element) => {
-      if(element.name == name) {
-        return element;
+  /**
+   * get element by id
+   * @param {number} id 
+   * @returns {FirebaseListObservable<object>} 
+   * @memberof TablePeriodicServiceService
+   */
+  getElementById(id: number): FirebaseListObservable<object> {
+    return this.db.list('/elements', {
+      query: {
+        orderByChild: "atomicNumber",
+        equalTo: id
       }
     });
   }
+
+  /**
+   * get element by name
+   * @param {string} [name='Lithium'] 
+   * @returns {FirebaseListObservable<object>} 
+   * @memberof TablePeriodicServiceService
+   */
+    getElementByName(name: string = 'Lithium'): FirebaseListObservable<object> {
+      return this.db.list('/elements', {
+        query: {
+          orderByChild: "name",
+          equalTo: name
+        }
+      });
+    }
   
   /**
-   * get element by group block
-   * 
+   * get element to block
    * @param {string} [group='nonmetal'] 
-   * @returns {*} 
+   * @returns {FirebaseListObservable<object>} 
    * @memberof TablePeriodicServiceService
    */
-  getElementByGroupBlock(group: string = 'nonmetal'): any {
-    return periodicTable.map((element) => {
-      if(element.groupBlock == group) {
-        return element;
+  getElementByGroupBlock(group: string = 'nonmetal'): FirebaseListObservable<object> {
+    return this.db.list('/elements', {
+      query: {
+        orderByChild: "groupBlock",
+        equalTo: group
       }
-    });
+    })
   }
 
   /**
-   * Get element by symbol
-   * 
+   * get element by symbol
    * @param {string} [symbol='Fe'] 
-   * @returns {*} 
+   * @returns {FirebaseListObservable<object>} 
    * @memberof TablePeriodicServiceService
    */
-  getElementBySymbol(symbol: string = 'Fe'): any {
-    return periodicTable.map((element) => {
-      if(element.symbol == symbol) {
-        return element;
+  getElementBySymbol(symbol: string = 'Fe'): FirebaseListObservable<object> {
+    return this.db.list('/elements', {
+      query: {
+        orderByChild: "symbol",
+        equalTo: symbol
       }
     });
   }
 
   /**
-   * Get groups blocks
-   * 
-   * @returns {*} 
+   * get group blocks
+   * @returns {FirebaseListObservable<any>} 
    * @memberof TablePeriodicServiceService
    */
-  getGroupBlocks(): any {
-    let groups: Array<any> = [];
-
-    for(let element of periodicTable) {
-      if(!groups.find((value) => (value.name == element.groupBlock))) {
-        groups.push({
-          'name': element.groupBlock,
-          'color': element.cpkHexColor
-        });
-      }
-    }
-
-    return groups;
+  getGroupBlocks(): FirebaseListObservable<any> {
+    return this.db.list('/groupBlock');
   }
 }

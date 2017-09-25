@@ -1,6 +1,8 @@
 <ul class="group-block">
     <li class="group-block--item" *ngFor="let group of groupsElements">
-      <button [ngClass]="{'active': group == groupSelectElement}" class="group-block--item--btn" (click)="groupSelectElementEvent(group)">
+      <button [ngClass]="{'active': group == groupSelectElement}"
+        class="group-block--item--btn"
+        (click)="groupSelectElementEvent(group)">
         <span [style.borderColor]="group.color"></span>
         <span class="active" [style.backgroundColor]="groupSelectElement.color"></span>
         {{group.name}}

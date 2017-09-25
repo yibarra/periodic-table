@@ -17,6 +17,9 @@ export class ElementComponent {
    */
   @Output() elementSelected = new EventEmitter<any>();
 
+  /**
+   * active group
+   */
   public activeGroup: boolean = false;
 
   /**

@@ -2,28 +2,26 @@
 
 .table {
     @include box-display();
-    display: flex;
     height: 825px;
     list-style: none;
     margin: 0;
+    max-width: $page-width;
     min-width: 768px;
     padding: 0;
     position: relative;
-    width: $page-width;
+    width: 100%;
 
     &--groups,
     &--container {
         @include box-display();
-        align-items: center;
-        display: flex;
-        justify-content: center;
+        float: left;
+        position: relative;
         width: 100%;
     }
 
     &-element {
         @include box-display();
         cursor: default;
-        display: flex;
         height: 75px;
         float: left;
         position: absolute;
@@ -31,8 +29,39 @@
     }
 }
 
-svg {
-    @include box-display;
-    float: left;
-    width: 900px;
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1170px) {
+    .table {
+        &--container {
+            text-align: center;
+        }
+
+        &-element {
+            float: none;
+            left: initial !important;
+            position: relative;
+            top: initial !important;
+            vertical-align: top;
+        }
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+
+}
+
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 320px) {
+
 }

@@ -1,5 +1,10 @@
 import { element } from 'protractor';
 import { Component, OnInit, ElementRef } from '@angular/core';
+
+import { Element } from './../../shared/element.model';
+import { FirebaseListObservable } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
+
 import { animate, query, trigger, stagger, state, style, transition } from '@angular/animations';
 
 import { TablePeriodicServiceService } from './../services/table-periodic-service';
@@ -25,7 +30,7 @@ import { TablePeriodicServiceService } from './../services/table-periodic-servic
 })
 export class TableComponent implements OnInit {
   public elementData: Array<any>;
-  public elements: Array<any>;
+  public elements: Array<Element> = [];
   public groupsElements: Array<any>;
   public groupSelect: Array<any> = null;
   public table: any = null;
@@ -34,14 +39,19 @@ export class TableComponent implements OnInit {
   constructor(private _periodicService: TablePeriodicServiceService, private _element: ElementRef) { }
 
   ngOnInit() {
-    this.elements = this._periodicService.getAll();
+    this._periodicService.getAll().subscribe(items => {
+      if(items.length > 0) {
+        this.elements = items;
 
-    if(this.elements.length > 0) {
-      this.groupsElements = this._periodicService.getGroupBlocks();
-    }
+        this._periodicService.getGroupBlocks().subscribe(groups => {
+          this.groupsElements = groups;
+        });
+      }
+    });
   }
 
   onGroup(event: Array<any>):void {
+    console.log(event);
     this.groupSelect = event;
   }
 
@@ -53,7 +63,7 @@ export class TableComponent implements OnInit {
 
   onResize(event) {
     if (event.target.innerWidth < 1170) {
-      console.log('resize');
+      console.log('resize', this.elements);
     } else {
       console.log('normal');
     }
@@ -63,7 +73,7 @@ export class TableComponent implements OnInit {
     this.typeElements = type;
 
     if(this.typeElements === 'normal') {
-      this.groupsElements = this._periodicService.getGroupBlocks();
+      console.log(this._periodicService.getGroupBlocks());
     }
   }
 }
