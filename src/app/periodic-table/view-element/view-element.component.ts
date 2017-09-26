@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Element } from './../../shared/element.model';
 
 @Component({
   selector: '[view-element]',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./view-element.component.scss']
 })
 export class ViewElementComponent implements OnInit {
-  @Input() elementData: Array<any>;
+  @Input() elementData: Element = null;
 
   constructor() { }
 

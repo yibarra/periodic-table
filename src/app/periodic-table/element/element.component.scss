@@ -83,7 +83,7 @@
             .electro-negativity,
             .number-atomic,
             .symbol {
-                color: $white-900;
+                color: $black-900;
                 z-index: 2;
             }
 
@@ -109,7 +109,9 @@
 
                 .radius {
                     @include box-display;
+                    animation: fadeInUp 1s ease-in-out 0s 1 forwards;
                     border-radius: 100%;
+                    mix-blend-mode: hard-light;
                     position: absolute;
                     top: 0;
                 }
@@ -136,3 +138,15 @@
         width: 65px;
     }
 }
+
+
+@keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

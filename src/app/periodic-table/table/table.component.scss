@@ -6,8 +6,7 @@
     list-style: none;
     margin: 0;
     max-width: $page-width;
-    min-width: 768px;
-    padding: 0;
+    padding: 0 10px;
     position: relative;
     width: 100%;
 
@@ -30,9 +29,10 @@
 }
 
 /* Large Devices, Wide Screens */
-@media only screen and (max-width : 1170px) {
+@media only screen and (max-width : 1180px) {
     .table {
         &--container {
+            padding: 0 30px;
             text-align: center;
         }
 
@@ -48,7 +48,7 @@
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px) {
-
+    
 }
 
 /* Small Devices, Tablets */
@@ -58,10 +58,19 @@
 
 /* Extra Small Devices, Phones */ 
 @media only screen and (max-width : 480px) {
+    .table {
+        &--container {
+            padding: 0 20px;
+            text-align: center;
+        }
 
-}
-
-/* Custom, iPhone Retina */ 
-@media only screen and (max-width : 320px) {
-
+        &-element {
+            float: none;
+            left: initial !important;
+            position: relative;
+            top: initial !important;
+            width: 50%;
+            vertical-align: top;
+        }
+    }
 }

@@ -1,4 +1,6 @@
+import { element } from 'protractor';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Element } from './../../shared/element.model';
 
 @Component({
   selector: '[element]',
@@ -28,13 +30,26 @@ export class ElementComponent {
    */
   constructor() { }
 
+
+  hexToRGB(hex: string, alpha: number):string {
+    let r = parseInt(hex.slice(1, 3), 16),
+        g = parseInt(hex.slice(3, 5), 16),
+        b = parseInt(hex.slice(5, 7), 16);
+
+    if (alpha) {
+        return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
+    } else {
+        return "rgb(" + r + ", " + g + ", " + b + ")";
+    }
+}
+
   /**
    * view element emitter
    * 
    * @param {Array <any>} element 
    * @memberof ElementComponent
    */
-  viewElement(element: Array <any>):void {
+  viewElement(element: Element):void {
     if(element && element.hasOwnProperty('atomicNumber')) {
       this.elementSelected.emit(element);
     }

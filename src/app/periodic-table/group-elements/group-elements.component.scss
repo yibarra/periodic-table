@@ -3,7 +3,6 @@
 .group-block {
     @include box-display;
     @extend %wrapper;
-    float: left;
     margin: 0;
     padding: 40px 0 20px;
     text-align: center;
@@ -52,6 +51,13 @@
                 span {
                     &.active {
                         opacity: 1;
+                    }
+
+                    &:last-child {
+                        height: 7px;
+                        left: 4px;
+                        top: 5px;
+                        width: 7px;
                     }
                 }
             }

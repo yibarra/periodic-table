@@ -1,7 +1,8 @@
 <section class="element" (click)="viewElement(elementData)">
   <div [ngSwitch]="typeView" class="element--content">
-    <div class="element-normal" *ngSwitchCase="'normal'" [style.backgroundColor]="elementData.cpkHexColor"
-      [ngClass]="{'group': groupBlock.name != undefined && groupBlock.name == elementData.groupBlock, 'not-group': groupBlock.name != undefined && groupBlock.name != elementData.groupBlock}">
+    <div class="element-normal" *ngSwitchCase="'normal'"
+      [style.backgroundColor]="elementData.cpkHexColor"
+      [ngClass]="{'group': groupBlock.id == 'all' || groupBlock.id == elementData.groupBlock, 'not-group': groupBlock.id != 'all' && groupBlock.id != elementData.groupBlock}">
       <p class="number-atomic">{{elementData.atomicNumber}}</p>
       <p class="symbol">{{elementData.symbol}}</p>
       <p class="electro-negativity"><span>{{elementData.atomicMass}}</span></p>
@@ -13,7 +14,8 @@
       <p class="element-electro-negativity">{{elementData.atomicMass}}</p>
     </div>
 
-    <div class="element-normal radius" *ngSwitchCase="'radius'">
+    <div class="element-normal radius" *ngSwitchCase="'radius'" 
+      [style.backgroundColor]="hexToRGB(elementData.cpkHexColor, .7)">
       <p class="number-atomic">{{elementData.atomicNumber}}</p>
       <p class="symbol">{{elementData.symbol}}</p>
       <p class="electro-negativity"><span>{{elementData.atomicMass}}</span></p>
