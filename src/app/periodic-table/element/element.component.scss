@@ -137,6 +137,30 @@
         position: relative;
         width: 65px;
     }
+
+    &.active {
+        .element-normal,
+        .element--content {
+            background-color: $black-900 !important;
+
+            .electro-negativity,
+            .number-atomic,
+            .symbol {
+                color: $white-900 !important;
+            }
+
+            &:before {
+                @include box-display;
+                border: 1px solid $white-100;
+                content: '';
+                height: calc(100% - 2px);
+                left: 0;
+                position: absolute;
+                top: 1px;
+                width: 100%;
+            }
+        }
+    }
 }
 
 

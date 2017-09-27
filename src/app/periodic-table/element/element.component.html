@@ -1,4 +1,5 @@
-<section class="element" (click)="viewElement(elementData)" *ngIf="elementData">
+<section (click)="viewElement(elementData)" *ngIf="elementData"
+  [ngClass]="{'element': true, 'active': active == elementData.atomicNumber}">
   <div [ngSwitch]="typeView" class="element--content">
     <div class="element-normal" *ngSwitchCase="'normal'"
       [style.backgroundColor]="elementData.cpkHexColor"

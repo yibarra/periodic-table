@@ -1,0 +1,163 @@
+@import '~../../../styles.scss';
+
+.element {
+    @include box-display;
+    height: 235px;
+    left: calc(50% - 185px);
+    position: absolute;
+    width: 185px;
+    z-index: 9;
+
+    .electro-config,
+    .ion,
+    .name,
+    .negativity,
+    .number,
+    .mass,
+    .oxidation,
+    .symbol {
+        @include box-display;
+        margin: 0;
+        position: absolute;
+        text-align: left;
+    }
+
+    .electro-config {
+        @include font($font-default, 16px, 300, $black-900);
+        bottom: 15px;
+        left: 0;
+        overflow: hidden;
+        padding: 0 30px 0 15px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+
+        & + .element-label {
+            bottom: 15px;
+            right: calc(100% + 10px);
+            text-align: right;
+        }
+    }
+
+    .ion {
+        @include font($font-default, 18px, 300, $black-900);
+        left: 15px;
+        letter-spacing: -1px;
+        top: 45px;
+
+        & + .element-label {
+            right: calc(100% + 10px);
+            text-align: right;
+            top: 50px;
+        }
+    }
+
+    .name {
+        @include font($font-default, 25px, 400, $black-900);
+        bottom: 35px;
+        float: left;
+        left: 0;
+        overflow: hidden;
+        padding: 0 30px 0 15px;
+        text-align: left;
+        text-overflow: ellipsis;
+        width: 100%;
+        white-space: nowrap;
+
+        & + .element-label {
+            bottom: 40px;
+            right: calc(100% + 10px);
+            text-align: right;
+        }
+    }
+
+    .mass {
+        @include font($font-default, 16px, 400, $black-900);
+        left: 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        top: 10px;
+        width: 40%;
+        white-space: nowrap;
+
+        & + .element-label {
+            right: calc(100% + 10px);
+            text-align: right;
+            top: 14px;
+        }
+    }
+
+    .number {
+        @include font($font-default, 36px, 400, $black-900);
+        letter-spacing: -2px;
+        right: 10px;
+        text-align: right;
+        top: 5px;
+
+        & + .element-label {
+            left: calc(100% + 10px);
+            top: 27px;
+        }
+    }
+
+    .negativity {
+        @include font($font-default, 18px, 300, $black-900);
+        letter-spacing: -1px;
+        right: 10px;
+        text-align: right;
+        top: 45px;
+
+        & + .element-label {
+            left: calc(100% + 10px);
+            top: 50px;
+        }
+    }
+
+    .oxidation {
+        @include font($font-default, 12px, 300, $black-900);
+        bottom: 15px;
+        line-height: 1.2em;
+        overflow: hidden;
+        right: 10px;
+        text-align: center;
+        width: 15px;
+
+        & + .element-label {
+            bottom: 15px;
+            left: calc(100% + 10px);
+        }
+    }
+
+    .symbol {
+        @include font($font-default, 95px, 500, $black-900);
+        line-height: 1em;
+        letter-spacing: -5px;
+        position: relative;
+        text-align: center;
+        text-indent: -5px;
+        top: 50%;
+        transform: translateY(-60%);
+        width: 100%;
+
+        & + .element-label {
+            bottom: calc(50% - 5px);
+            right: calc(100% + 10px);
+            text-align: right;
+        }
+    }
+
+    &-label {
+        @include box-display;
+        @include font($font-default, 12px, 300, $white-100);
+        margin: 0;
+        position: absolute;
+        text-align: left;
+        width: 100%;
+    }
+
+    &-btn {
+        @include box-display;
+        display: none;
+        position: absolute;
+    }
+}

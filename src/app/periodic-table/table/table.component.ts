@@ -21,6 +21,7 @@ export class TableComponent implements OnInit {
   public groupSelect: Array<any> = null;
   public table: any = null;
   public typeElements: string = 'normal';
+  public activeElement: number;
 
   constructor(private _periodicService: TablePeriodicServiceService, private _element: ElementRef) { }
 
@@ -44,6 +45,7 @@ export class TableComponent implements OnInit {
   onElement(event: Element):void {
     if(event.hasOwnProperty('atomicNumber')) {
       this.elementData = event;
+      this.activeElement = this.elementData.atomicNumber;
     }
   }
 

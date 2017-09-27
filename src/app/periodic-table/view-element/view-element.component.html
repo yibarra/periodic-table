@@ -1,3 +1,20 @@
-<p>
-  {{elementData.atomicNumber}}
-</p>
+<section class="element" [style.backgroundColor]="elementData.cpkHexColor">
+  <p class="mass">{{elementData.atomicMass}}</p>
+  <p class="element-label">Atomic Mass</p>
+  <p class="number">{{elementData.atomicNumber}}</p>
+  <p class="element-label">Atomic Number</p>
+  <p class="ion">{{elementData.ionizationEnergy}}</p>
+  <p class="element-label">Ionization Energy</p>
+  <p class="negativity">{{elementData.electronegativity}}</p>
+  <p class="element-label">Electro Negativity</p>
+  <p class="symbol">{{elementData.symbol}}</p>
+  <p class="element-label">Chemical Symbol</p>
+  <p class="oxidation">{{elementData.oxidationStates}}&nbsp;</p>
+  <p class="element-label">Oxidation States</p>
+  <p class="name">{{elementData.name}}</p>
+  <p class="element-label">Name</p>
+  <p class="electro-config">{{elementData.electronicConfiguration}}</p>
+  <p class="element-label">Electro Configuration</p>
+</section>
+
+<button class="element-btn">Read More</button>
